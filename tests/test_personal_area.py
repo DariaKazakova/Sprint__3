@@ -1,12 +1,8 @@
-from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from locators import *
 
-def test_go_to_personal_area_by_button_true():
-    browser = webdriver.Chrome()
-    browser.get('https://stellarburgers.nomoreparties.site/')
-    browser.maximize_window()
+def test_go_to_personal_area_by_button_true(browser):
     browser.find_element(*main_page_locators.personal_account_button_text_header).click()
     browser.find_element(*log_in_locators.email_input_lo).send_keys('Daria_Kazakova_5785@yandex.ru')
     browser.find_element(*log_in_locators.password_input_lo).send_keys('123456')
@@ -19,12 +15,8 @@ def test_go_to_personal_area_by_button_true():
         personal_area_locators.text_change_personal_data))
     url = browser.current_url
     assert url == 'https://stellarburgers.nomoreparties.site/account/profile'
-    browser.quit()
 
-def test_logout_from_personal_profile_true():
-    browser = webdriver.Chrome()
-    browser.get('https://stellarburgers.nomoreparties.site/')
-    browser.maximize_window()
+def test_logout_from_personal_profile_true(browser):
     browser.find_element(*main_page_locators.personal_account_button_text_header).click()
     browser.find_element(*log_in_locators.email_input_lo).send_keys('Daria_Kazakova_5785@yandex.ru')
     browser.find_element(*log_in_locators.password_input_lo).send_keys('123456')
